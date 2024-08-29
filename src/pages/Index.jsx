@@ -97,7 +97,7 @@ Email: tiendavalpo07@gmail.com`;
         }
         #floating-logo {
           position: fixed;
-          bottom: 20px;
+          top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
           width: 250px;
@@ -163,7 +163,7 @@ Email: tiendavalpo07@gmail.com`;
         ref={logoRef}
         onMouseMove={handleLogoInteraction}
         onMouseLeave={resetLogoPosition}
-        className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 cursor-pointer z-10"
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 cursor-pointer z-10"
         style={{
           backgroundImage: "url('https://i.imgur.com/gDXPs0n.png')",
           transition: 'transform 0.1s ease-out'
