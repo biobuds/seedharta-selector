@@ -113,12 +113,13 @@ const Index = () => {
         <div className="text-center max-w-md" style={{ animation: 'fadeIn 1s' }}>
           <h2 className="text-3xl mb-6 font-bold">{selectedStore === 'vina' ? 'SeedHarta Viña' : 'SeedHarta Valpo'}</h2>
           <div className="mb-6">
-            <p>Nombre: SeedHarta SpA</p>
-            <p>Banco: Banco Estado</p>
-            <p>Cuenta: 123456789</p>
+            <h3 className="text-xl mb-2 font-semibold">Detalles de Pago y Contacto</h3>
+            <p>Nombre: Claudio Arias</p>
+            <p>Banco: Scotiabank</p>
+            <p>Cuenta Corriente: 1976772503</p>
             <p>RUT: 12.345.678-9</p>
-            <p>Email: {selectedStore === 'vina' ? 'vina@seedharta.cl' : 'valpo@seedharta.cl'}</p>
-            <button className="copy-button mt-2" onClick={() => handleCopyToClipboard('SeedHarta SpA\nBanco Estado\nCuenta: 123456789\nRUT: 12.345.678-9\nEmail: ' + (selectedStore === 'vina' ? 'vina@seedharta.cl' : 'valpo@seedharta.cl'))}>
+            <p>Email: tiendavalpo07@gmail.com</p>
+            <button className="copy-button mt-2" onClick={() => handleCopyToClipboard('Detalles de Pago y Contacto\n\nNombre: Claudio Arias\nBanco: Scotiabank\nCuenta Corriente: 1976772503\nRUT: 12.345.678-9\nEmail: tiendavalpo07@gmail.com')}>
               Copiar datos
             </button>
           </div>
