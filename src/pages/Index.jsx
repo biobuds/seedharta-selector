@@ -42,7 +42,7 @@ Email: tiendavalpo07@gmail.com`;
       if (logoRef.current) {
         const time = Date.now() * 0.001 * oscillationSpeed;
         const yOffset = Math.sin(time) * 5; // 5px max displacement
-        logoRef.current.style.transform = `translateY(${yOffset}px)`;
+        logoRef.current.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
       }
       requestAnimationFrame(animateLogo);
     };
@@ -96,12 +96,12 @@ Email: tiendavalpo07@gmail.com`;
           box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
         }
         #floating-logo {
-          position: fixed;
+          position: absolute;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 250px;
-          height: 250px;
+          width: 300px;
+          height: 300px;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
@@ -109,11 +109,19 @@ Email: tiendavalpo07@gmail.com`;
           opacity: 0.15;
           transition: transform 0.3s ease-out;
           cursor: pointer;
+          z-index: -1;
         }
       `}</style>
 
+      <div
+        id="floating-logo"
+        ref={logoRef}
+        onMouseMove={handleLogoInteraction}
+        onMouseLeave={resetLogoPosition}
+      ></div>
+
       {!selectedStore ? (
-        <div className="text-center" style={{ animation: 'fadeIn 1.5s forwards' }}>
+        <div className="text-center relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h1 className="text-4xl mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
           <div>
             <button className="store-button" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
@@ -121,7 +129,7 @@ Email: tiendavalpo07@gmail.com`;
           </div>
         </div>
       ) : (
-        <div className="text-center max-w-md bg-opacity-10 bg-white p-8 rounded-lg shadow-lg" style={{ animation: 'fadeIn 1.5s forwards' }}>
+        <div className="text-center max-w-md bg-opacity-10 bg-white p-8 rounded-lg shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h2 className="text-3xl mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-xl mb-4 font-semibold">Detalles de Pago y Contacto</h3>
@@ -152,23 +160,11 @@ Email: tiendavalpo07@gmail.com`;
       )}
 
       <button
-        className="absolute top-4 right-4 bg-white bg-opacity-10 px-4 py-2 rounded-full hover:bg-opacity-20 transition-all"
+        className="absolute top-4 right-4 bg-white bg-opacity-10 px-4 py-2 rounded-full hover:bg-opacity-20 transition-all z-20"
         onClick={() => setSelectedStore(null)}
       >
         Selección de tienda
       </button>
-
-      <div
-        id="floating-logo"
-        ref={logoRef}
-        onMouseMove={handleLogoInteraction}
-        onMouseLeave={resetLogoPosition}
-        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 cursor-pointer -z-10"
-        style={{
-          backgroundImage: "url('https://i.imgur.com/gDXPs0n.png')",
-          transition: 'transform 0.1s ease-out'
-        }}
-      ></div>
     </div>
   );
 };
