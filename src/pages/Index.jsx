@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 
 const Index = () => {
   const [selectedStore, setSelectedStore] = useState(null);
+  const logoRef = useRef(null);
 
   useEffect(() => {
     document.body.style.backgroundColor = 'black';
@@ -34,12 +35,27 @@ Email: tiendavalpo07@gmail.com`;
     });
   };
 
-  const handleLogoClick = () => {
-    const logo = document.getElementById('floating-logo');
-    logo.style.animation = 'bounce 0.5s';
-    setTimeout(() => {
-      logo.style.animation = '';
-    }, 500);
+  const handleLogoInteraction = (e) => {
+    if (!logoRef.current) return;
+    
+    const logo = logoRef.current;
+    const rect = logo.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    
+    const maxRotation = 20;
+    const rotateY = (x / rect.width) * maxRotation;
+    const rotateX = -(y / rect.height) * maxRotation;
+    
+    logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    
+    logo.addEventListener('mouseleave', resetLogoPosition);
+  };
+
+  const resetLogoPosition = () => {
+    if (logoRef.current) {
+      logoRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    }
   };
 
   return (
@@ -49,16 +65,7 @@ Email: tiendavalpo07@gmail.com`;
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes oscillate {
-          0% { transform: translate(-50%, -50%) rotateY(10deg) rotateZ(0deg); }
-          50% { transform: translate(-50%, -50%) rotateY(-10deg) rotateZ(3deg); }
-          100% { transform: translate(-50%, -50%) rotateY(10deg) rotateZ(-3deg); }
-        }
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-30px); }
-        }
-        .store-button {
+        .store-button, .social-button {
           text-decoration: none;
           color: #fff;
           padding: 12px 25px;
@@ -75,31 +82,10 @@ Email: tiendavalpo07@gmail.com`;
           width: 100%;
           max-width: 300px;
         }
-        .store-button:hover {
+        .store-button:hover, .social-button:hover {
           transform: scale(1.05);
           background-color: rgba(255, 255, 255, 0.3);
           box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-        }
-        .social-button {
-          text-decoration: none;
-          color: #fff;
-          padding: 10px 20px;
-          margin: 10px;
-          display: inline-block;
-          border-radius: 25px;
-          font-weight: bold;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          background-color: rgba(255, 255, 255, 0.1);
-          border: 2px solid rgba(255, 255, 255, 0.4);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-          transition: all 0.3s ease;
-          font-size: 0.9rem;
-        }
-        .social-button:hover {
-          transform: scale(1.05);
-          background-color: rgba(255, 255, 255, 0.2);
-          box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
         #floating-logo {
           position: fixed;
@@ -113,7 +99,7 @@ Email: tiendavalpo07@gmail.com`;
           background-position: center;
           background-repeat: no-repeat;
           opacity: 0.15;
-          animation: oscillate 5s ease-in-out infinite alternate;
+          transition: transform 0.3s ease-out;
           cursor: pointer;
         }
       `}</style>
@@ -122,13 +108,13 @@ Email: tiendavalpo07@gmail.com`;
         <div className="text-center" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h1 className="text-4xl mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
           <div>
-            <button className="store-button" onClick={() => handleStoreSelect('vina')}>SeedHarta Viña</button>
-            <button className="store-button" onClick={() => handleStoreSelect('valpo')}>SeedHarta Valpo</button>
+            <button className="store-button" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
+            <button className="store-button" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
           </div>
         </div>
       ) : (
         <div className="text-center max-w-md bg-opacity-10 bg-white p-8 rounded-lg shadow-lg" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h2 className="text-3xl mb-6 font-bold">{selectedStore === 'vina' ? 'SeedHarta Viña' : 'SeedHarta Valpo'}</h2>
+          <h2 className="text-3xl mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-xl mb-4 font-semibold">Detalles de Pago y Contacto</h3>
             <p><strong>Nombre:</strong> Claudio Arias</p>
@@ -144,6 +130,16 @@ Email: tiendavalpo07@gmail.com`;
             <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
             <a href="https://instagram.com/tu-pagina" target="_blank" rel="noopener noreferrer" className="social-button">Instagram</a>
           </div>
+          <a
+            href={selectedStore === 'vina'
+              ? "https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1"
+              : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="social-button"
+          >
+            Ubicación
+          </a>
         </div>
       )}
 
@@ -156,7 +152,9 @@ Email: tiendavalpo07@gmail.com`;
 
       <div
         id="floating-logo"
-        onClick={handleLogoClick}
+        ref={logoRef}
+        onMouseMove={handleLogoInteraction}
+        onMouseLeave={resetLogoPosition}
       ></div>
     </div>
   );
