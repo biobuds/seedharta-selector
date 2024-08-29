@@ -40,21 +40,19 @@ Email: tiendavalpo07@gmail.com`;
     
     const logo = logoRef.current;
     const rect = logo.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
+    const y = e.clientY - rect.top;
     
-    const maxRotation = 20;
-    const rotateY = (x / rect.width) * maxRotation;
-    const rotateX = -(y / rect.height) * maxRotation;
+    const maxTilt = 15;
+    const tilt = ((y / rect.height) - 0.5) * maxTilt;
     
-    logo.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    
-    logo.addEventListener('mouseleave', resetLogoPosition);
+    logo.style.transform = `perspective(1000px) rotateX(${tilt}deg)`;
+    logo.style.transition = 'transform 0.1s ease-out';
   };
 
   const resetLogoPosition = () => {
     if (logoRef.current) {
-      logoRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      logoRef.current.style.transform = 'perspective(1000px) rotateX(0deg)';
+      logoRef.current.style.transition = 'transform 0.3s ease-out';
     }
   };
 
@@ -155,6 +153,11 @@ Email: tiendavalpo07@gmail.com`;
         ref={logoRef}
         onMouseMove={handleLogoInteraction}
         onMouseLeave={resetLogoPosition}
+        className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 transition-transform duration-300 ease-out cursor-pointer z-10"
+        style={{
+          backgroundImage: "url('https://i.imgur.com/gDXPs0n.png')",
+          transformStyle: 'preserve-3d'
+        }}
       ></div>
     </div>
   );
