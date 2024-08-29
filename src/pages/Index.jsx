@@ -35,6 +35,21 @@ Email: tiendavalpo07@gmail.com`;
     });
   };
 
+  const [oscillationSpeed, setOscillationSpeed] = useState(1);
+
+  useEffect(() => {
+    const animateLogo = () => {
+      if (logoRef.current) {
+        const time = Date.now() * 0.001 * oscillationSpeed;
+        const yOffset = Math.sin(time) * 5; // 5px max displacement
+        logoRef.current.style.transform = `translateY(${yOffset}px)`;
+      }
+      requestAnimationFrame(animateLogo);
+    };
+    const animationFrame = requestAnimationFrame(animateLogo);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [oscillationSpeed]);
+
   const handleLogoInteraction = (e) => {
     if (!logoRef.current) return;
     
@@ -42,18 +57,13 @@ Email: tiendavalpo07@gmail.com`;
     const rect = logo.getBoundingClientRect();
     const y = e.clientY - rect.top;
     
-    const maxTilt = 15;
-    const tilt = ((y / rect.height) - 0.5) * maxTilt;
-    
-    logo.style.transform = `perspective(1000px) rotateX(${tilt}deg)`;
-    logo.style.transition = 'transform 0.1s ease-out';
+    // Adjust oscillation speed based on mouse position
+    const newSpeed = 1 + Math.abs((y / rect.height - 0.5) * 2);
+    setOscillationSpeed(newSpeed);
   };
 
   const resetLogoPosition = () => {
-    if (logoRef.current) {
-      logoRef.current.style.transform = 'perspective(1000px) rotateX(0deg)';
-      logoRef.current.style.transition = 'transform 0.3s ease-out';
-    }
+    setOscillationSpeed(1);
   };
 
   return (
@@ -153,10 +163,10 @@ Email: tiendavalpo07@gmail.com`;
         ref={logoRef}
         onMouseMove={handleLogoInteraction}
         onMouseLeave={resetLogoPosition}
-        className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 transition-transform duration-300 ease-out cursor-pointer z-10"
+        className="fixed bottom-20 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-contain bg-center bg-no-repeat opacity-15 cursor-pointer z-10"
         style={{
           backgroundImage: "url('https://i.imgur.com/gDXPs0n.png')",
-          transformStyle: 'preserve-3d'
+          transition: 'transform 0.1s ease-out'
         }}
       ></div>
     </div>
