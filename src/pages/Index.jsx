@@ -84,8 +84,9 @@ tiendavalpo07@gmail.com`;
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
           transition: all 0.2s ease;
           font-size: 0.9rem;
-          width: auto;
-          min-width: 120px;
+        }
+        .store-button {
+          width: 100%;
         }
         .store-button:hover, .social-button:hover {
           background-color: rgba(255, 255, 255, 0.2);
@@ -134,8 +135,8 @@ tiendavalpo07@gmail.com`;
         <div className="text-center relative z-10 w-full max-w-md" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h1 className="text-3xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="store-button" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
-            <button className="store-button" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
+            <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
+            <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
           </div>
         </div>
       ) : (
