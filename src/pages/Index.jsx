@@ -20,11 +20,12 @@ const Index = () => {
   };
 
   const handleCopyToClipboard = () => {
-    const text = `Nombre: Claudio Arias
-Banco: Scotiabank
-Cuenta Corriente: 1976772503
-RUT: 12.345.678-9
-Email: tiendavalpo07@gmail.com`;
+    const text = `Claudio Arias
+12.345.678-9
+Cuenta Corriente
+1976772503
+Banco Scotiabank
+tiendavalpo07@gmail.com`;
     navigator.clipboard.writeText(text).then(() => {
       toast.success('Datos copiados al portapapeles');
     });
@@ -106,11 +107,12 @@ Email: tiendavalpo07@gmail.com`;
           <div className="mb-6 text-left bg-black bg-opacity-50 p-6 rounded-lg">
             <h3 className="text-2xl mb-4 font-semibold">Datos de Transferencia Bancaria:</h3>
             <p className="text-lg whitespace-pre-line">
-              Nombre:             Claudio Arias
-              Banco:              Scotiabank
-              Cuenta Corriente:   1976772503
-              RUT:                12.345.678-9
-              Email:              tiendavalpo07@gmail.com
+Nombre: Claudio Arias
+RUT: 12.345.678-9
+Cuenta: Corriente
+1976772503
+Banco: Scotiabank
+tiendavalpo07@gmail.com
             </p>
             <button className="social-button mt-6 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
