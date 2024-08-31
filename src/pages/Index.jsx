@@ -145,11 +145,11 @@ tiendavalpo07@gmail.com`;
           <div className="mb-6 text-left">
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
             <p className="text-sm sm:text-base whitespace-pre-line">
-              Claudio Arias<br>
-              12.345.678-9<br>
-              Cuenta Corriente<br>
-              1976772503<br>
-              Banco Scotiabank<br>
+              Claudio Arias<br />
+              12.345.678-9<br />
+              Cuenta Corriente<br />
+              1976772503<br />
+              Banco Scotiabank<br />
               tiendavalpo07@gmail.com
             </p>
             <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
