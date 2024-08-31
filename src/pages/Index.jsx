@@ -65,19 +65,27 @@ Email: tiendavalpo07@gmail.com`;
           transform: translateY(1px);
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
+        @keyframes floatLogo {
+          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
+          50% { transform: translate(-50%, -50%) translateY(-20px); }
+        }
         #background-logo {
           position: fixed;
           top: 50%;
           left: 50%;
-          transform: translate(-50%, -50%);
-          width: 80%;
-          height: 80%;
+          width: 60%;
+          height: 60%;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
           opacity: 0.1;
           z-index: -1;
+          animation: floatLogo 6s ease-in-out infinite;
+          transition: opacity 0.3s ease;
+        }
+        #background-logo:hover {
+          opacity: 0.15;
         }
       `}</style>
 
@@ -98,11 +106,11 @@ Email: tiendavalpo07@gmail.com`;
           <div className="mb-6 text-left bg-black bg-opacity-50 p-6 rounded-lg">
             <h3 className="text-2xl mb-4 font-semibold">Datos de Transferencia Bancaria:</h3>
             <p className="text-lg whitespace-pre-line">
-              Nombre: Claudio Arias
-              Banco: Scotiabank
-              Cuenta Corriente: 1976772503
-              RUT: 12.345.678-9
-              Email: tiendavalpo07@gmail.com
+              Nombre:             Claudio Arias
+              Banco:              Scotiabank
+              Cuenta Corriente:   1976772503
+              RUT:                12.345.678-9
+              Email:              tiendavalpo07@gmail.com
             </p>
             <button className="social-button mt-6 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
