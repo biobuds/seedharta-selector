@@ -91,63 +91,66 @@ Error generating stack: `+i.message+`
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
- */const aS=lS("House",[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"1d0kgt"}]]),uS=()=>{const[e,t]=x.useState(null);x.useEffect(()=>(document.body.style.backgroundColor="black",document.body.style.color="white",document.body.style.fontFamily="Arial, sans-serif",()=>{document.body.style.backgroundColor="",document.body.style.color="",document.body.style.fontFamily=""}),[]);const n=o=>{t(o)},r=()=>{navigator.clipboard.writeText(`Nombre: Claudio Arias
-Banco: Scotiabank
-Cuenta Corriente: 1976772503
-RUT: 12.345.678-9
-Email: tiendavalpo07@gmail.com`).then(()=>{c0.success("Datos copiados al portapapeles")})};return A.jsxs("div",{className:"min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8",children:[A.jsx("style",{jsx:!0,children:`
-        @keyframes glowText {
-          0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-          50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
-          100% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
-        }
-        .glow-text {
-          animation: glowText 3s infinite;
+ */const aS=lS("House",[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"1d0kgt"}]]),uS=()=>{const[e,t]=x.useState(null),n=x.useRef(null);x.useEffect(()=>(document.body.style.backgroundColor="black",document.body.style.color="white",document.body.style.fontFamily="Arial, sans-serif",()=>{document.body.style.backgroundColor="",document.body.style.color="",document.body.style.fontFamily=""}),[]);const r=u=>{t(u)},o=()=>{navigator.clipboard.writeText(`Claudio Arias
+12.345.678-9
+Cuenta Corriente
+1976772503
+Banco Scotiabank
+tiendavalpo07@gmail.com`).then(()=>{c0.success("Datos copiados al portapapeles")})},[i,s]=x.useState(1);x.useEffect(()=>{const u=()=>{if(n.current){const f=Date.now()*.001*i,c=Math.sin(f)*5;n.current.style.transform=`translate(-50%, -50%) translateY(${c}px)`}requestAnimationFrame(u)},d=requestAnimationFrame(u);return()=>cancelAnimationFrame(d)},[i]);const l=u=>{if(!n.current)return;const f=n.current.getBoundingClientRect(),c=u.clientY-f.top,g=1+Math.abs((c/f.height-.5)*2);s(g)},a=()=>{s(1)};return A.jsxs("div",{className:"min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8",children:[A.jsx("style",{jsx:!0,children:`
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
         }
         .store-button, .social-button {
           text-decoration: none;
           color: #fff;
-          padding: 12px 24px;
-          margin: 8px;
+          padding: 10px 20px;
+          margin: 5px;
           display: inline-block;
-          border-radius: 30px;
+          border-radius: 25px;
           font-weight: bold;
           text-transform: uppercase;
           background-color: rgba(255, 255, 255, 0.1);
-          border: 2px solid rgba(255, 255, 255, 0.6);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-          transition: all 0.3s ease;
-          font-size: 1rem;
+          border: 2px solid rgba(255, 255, 255, 0.4);
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+          transition: all 0.2s ease;
+          font-size: 0.9rem;
+        }
+        .store-button {
+          width: 100%;
         }
         .store-button:hover, .social-button:hover {
           background-color: rgba(255, 255, 255, 0.2);
-          box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-          transform: translateY(-2px);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
         }
         .store-button:active, .social-button:active {
-          transform: translateY(1px);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+          transform: scale(0.98);
+          background-color: rgba(255, 255, 255, 0.3);
         }
-        @keyframes floatLogo {
-          0%, 100% { transform: translate(-50%, -50%) translateY(0px); }
-          50% { transform: translate(-50%, -50%) translateY(-20px); }
-        }
-        #background-logo {
-          position: fixed;
+        #floating-logo {
+          position: absolute;
           top: 50%;
           left: 50%;
-          width: 60%;
-          height: 60%;
+          transform: translate(-50%, -50%);
+          width: 200px;
+          height: 200px;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
-          opacity: 0.1;
-          z-index: -1;
-          animation: floatLogo 6s ease-in-out infinite;
-          transition: opacity 0.3s ease;
-        }
-        #background-logo:hover {
           opacity: 0.15;
+          transition: transform 0.3s ease-out;
+          cursor: pointer;
+          z-index: -1;
         }
-      `}),A.jsx("div",{id:"background-logo"}),e?A.jsxs("div",{className:"text-center w-full max-w-md p-4 relative z-10",children:[A.jsxs("h2",{className:"text-4xl mb-6 font-bold glow-text",children:["Detalles de Pago y Contacto - ",e==="vina"?"Viña":"Valpo"]}),A.jsxs("div",{className:"mb-6 text-left bg-black bg-opacity-50 p-6 rounded-lg",children:[A.jsx("h3",{className:"text-2xl mb-4 font-semibold",children:"Datos de Transferencia Bancaria:"}),A.jsx("p",{className:"text-lg whitespace-pre-line",children:"Nombre:             Claudio Arias Banco:              Scotiabank Cuenta Corriente:   1976772503 RUT:                12.345.678-9 Email:              tiendavalpo07@gmail.com"}),A.jsx("button",{className:"social-button mt-6 w-full",onClick:r,children:"Copiar datos de transferencia"})]}),A.jsxs("div",{className:"flex flex-row justify-center items-center space-x-4 mb-6",children:[A.jsx("a",{href:"https://wa.me/56912345678",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"WHATSAPP"}),A.jsx("a",{href:e==="vina"?"https://www.facebook.com/seedhartavinadelmar":"https://www.facebook.com/seedhartavalparaiso",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"FACEBOOK"}),A.jsx("a",{href:e==="vina"?"https://www.instagram.com/seedhartavinadelmar/":"https://www.instagram.com/seedhartagrow/",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"INSTAGRAM"})]})]}):A.jsxs("div",{className:"text-center relative z-10 w-full max-w-md",children:[A.jsx("h1",{className:"text-5xl mb-8 font-bold glow-text",children:"SeedHarta"}),A.jsx("h2",{className:"text-3xl mb-8 font-bold glow-text",children:"Selecciona Tu Tienda"}),A.jsxs("div",{className:"flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4",children:[A.jsx("button",{className:"store-button w-full sm:w-48",onClick:()=>n("vina"),children:"Seedharta Viña"}),A.jsx("button",{className:"store-button w-full sm:w-48",onClick:()=>n("valpo"),children:"Seedharta Valpo"})]})]}),A.jsx("button",{className:"absolute top-4 right-4 bg-white bg-opacity-10 px-4 py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-base",onClick:()=>t(null),children:"Volver a selección"})]})},cS=[{title:"Home",to:"/",icon:A.jsx(aS,{className:"h-4 w-4"}),page:A.jsx(uS,{})}],dS=new gx,fS=()=>A.jsx(vx,{client:dS,children:A.jsxs(G1,{children:[A.jsx(E0,{}),A.jsx(rS,{basename:"/seedharta-selector/",children:A.jsx(eS,{children:cS.map(({to:e,page:t})=>A.jsx(hm,{path:e,element:t},e))})})]})});bl.createRoot(document.getElementById("root")).render(A.jsx(fS,{}));
+        @media (min-width: 640px) {
+          .store-button, .social-button {
+            font-size: 1rem;
+            padding: 12px 25px;
+          }
+          #floating-logo {
+            width: 300px;
+            height: 300px;
+          }
+        }
+      `}),A.jsx("div",{id:"floating-logo",ref:n,onMouseMove:l,onMouseLeave:a}),e?A.jsxs("div",{className:"text-center w-full max-w-md p-4 relative z-10",style:{animation:"fadeIn 1.5s forwards"},children:[A.jsx("h2",{className:"text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold",children:e==="vina"?"Seedharta Viña":"Seedharta Valpo"}),A.jsxs("div",{className:"mb-6 text-left",children:[A.jsx("h3",{className:"text-lg sm:text-xl mb-3 sm:mb-4 font-semibold",children:"Detalles de Pago y Contacto"}),A.jsx("p",{className:"text-sm sm:text-base whitespace-pre-line",children:"Claudio Arias 12.345.678-9 Cuenta Corriente 1976772503 Banco Scotiabank tiendavalpo07@gmail.com"}),A.jsx("button",{className:"social-button mt-4 w-full",onClick:o,children:"Copiar datos de transferencia"})]}),A.jsxs("div",{className:"flex flex-row justify-center items-center space-x-4 mb-6 flex-wrap",children:[A.jsx("a",{href:"https://wa.me/56912345678",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"WhatsApp"}),A.jsx("a",{href:e==="vina"?"https://www.instagram.com/seedhartavinadelmar/":"https://www.instagram.com/seedhartagrow/",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"Instagram"}),A.jsx("a",{href:e==="vina"?"https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1":"https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D",target:"_blank",rel:"noopener noreferrer",className:"social-button",children:"Ubicación"})]})]}):A.jsxs("div",{className:"text-center relative z-10 w-full max-w-md",style:{animation:"fadeIn 1.5s forwards"},children:[A.jsx("h1",{className:"text-3xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow",children:"Selecciona Tu Tienda"}),A.jsxs("div",{className:"flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4",children:[A.jsx("button",{className:"store-button w-full sm:w-48",onClick:()=>r("vina"),children:"Seedharta Viña"}),A.jsx("button",{className:"store-button w-full sm:w-48",onClick:()=>r("valpo"),children:"Seedharta Valpo"})]})]}),A.jsx("button",{className:"absolute top-4 right-4 bg-white bg-opacity-10 px-3 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-sm sm:text-base",onClick:()=>t(null),children:"Selección de tienda"})]})},cS=[{title:"Home",to:"/",icon:A.jsx(aS,{className:"h-4 w-4"}),page:A.jsx(uS,{})}],dS=new gx,fS=()=>A.jsx(vx,{client:dS,children:A.jsxs(G1,{children:[A.jsx(E0,{}),A.jsx(rS,{basename:"/seedharta-selector/",children:A.jsx(eS,{children:cS.map(({to:e,page:t})=>A.jsx(hm,{path:e,element:t},e))})})]})});bl.createRoot(document.getElementById("root")).render(A.jsx(fS,{}));
