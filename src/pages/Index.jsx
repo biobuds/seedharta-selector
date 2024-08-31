@@ -22,7 +22,7 @@ const Index = () => {
 
   const handleCopyToClipboard = () => {
     const text = `Claudio Arias
-12.345.678-9
+12.006.081-3
 Cuenta Corriente
 1976772503
 Banco Scotiabank
@@ -146,7 +146,7 @@ tiendavalpo07@gmail.com`;
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
             <p className="text-sm sm:text-base whitespace-pre-line">
               Nombre: Claudio Arias<br />
-              Rut: 12.345.678-9<br />
+              Rut: 12.006.081-3<br />
               Cuenta: Corriente<br />
               N.Cuenta: 1976772503<br />
               Banco: Scotiabank<br />
