@@ -144,7 +144,17 @@ Email: tiendavalpo07@gmail.com`;
           </div>
           <div className="flex justify-center space-x-4 mb-6">
             <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button flex-1">WhatsApp</a>
-            <a href="https://instagram.com/tu-pagina" target="_blank" rel="noopener noreferrer" className="social-button flex-1">Instagram</a>
+            <a 
+              href={selectedStore === 'vina' 
+                ? "https://www.instagram.com/seedhartavinadelmar/" 
+                : "https://www.instagram.com/seedhartagrow/"
+              } 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-button flex-1"
+            >
+              Instagram
+            </a>
             <a
               href={selectedStore === 'vina'
                 ? "https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1"
