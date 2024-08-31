@@ -139,7 +139,7 @@ Email: tiendavalpo07@gmail.com`;
           </div>
         </div>
       ) : (
-        <div className="text-center w-full max-w-md bg-opacity-10 bg-white p-6 sm:p-8 rounded-lg shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
+        <div className="text-center w-full max-w-md p-4 sm:p-8 sm:bg-opacity-10 sm:bg-white sm:rounded-lg sm:shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
