@@ -77,7 +77,7 @@ Email: tiendavalpo07@gmail.com`;
           text-decoration: none;
           color: #fff;
           padding: 12px 25px;
-          margin: 10px;
+          margin: 5px;
           display: inline-block;
           border-radius: 25px;
           font-weight: bold;
@@ -87,8 +87,8 @@ Email: tiendavalpo07@gmail.com`;
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
           transition: all 0.3s ease;
           font-size: 1rem;
-          width: 100%;
-          max-width: 300px;
+          width: auto;
+          min-width: 150px;
         }
         .store-button:hover, .social-button:hover {
           transform: scale(1.05);
@@ -123,7 +123,7 @@ Email: tiendavalpo07@gmail.com`;
       {!selectedStore ? (
         <div className="text-center relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h1 className="text-4xl mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
-          <div>
+          <div className="flex justify-center space-x-4">
             <button className="store-button" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
             <button className="store-button" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
           </div>
@@ -142,20 +142,20 @@ Email: tiendavalpo07@gmail.com`;
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex justify-center mb-6">
-            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
-            <a href="https://instagram.com/tu-pagina" target="_blank" rel="noopener noreferrer" className="social-button">Instagram</a>
+          <div className="flex justify-center space-x-4 mb-6">
+            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button flex-1">WhatsApp</a>
+            <a href="https://instagram.com/tu-pagina" target="_blank" rel="noopener noreferrer" className="social-button flex-1">Instagram</a>
+            <a
+              href={selectedStore === 'vina'
+                ? "https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1"
+                : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-button flex-1"
+            >
+              Ubicación
+            </a>
           </div>
-          <a
-            href={selectedStore === 'vina'
-              ? "https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1"
-              : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="social-button"
-          >
-            Ubicación
-          </a>
         </div>
       )}
 
