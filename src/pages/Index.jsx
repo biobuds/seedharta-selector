@@ -159,7 +159,7 @@ tiendavalpo07@gmail.com`;
           <div className="flex flex-row justify-center items-center space-x-4 mb-6 flex-wrap">
             <a href={selectedStore === 'vina' 
                 ? "https://wa.me/56964316344"
-                : "https://wa.me/56964316344"
+                : "https://wa.me/56993198230"
               } target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
             <a 
               href={selectedStore === 'vina' 
