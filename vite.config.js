@@ -7,6 +7,10 @@ import { resolve } from "path";
 export default defineConfig({
   plugins: [react()],
   base: "/seedharta-selector/",
+  server: {
+    host: "::",
+    port: "8080",
+  },
   resolve: {
     alias: [
       {
