@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
 const Index = () => {
   const [selectedStore, setSelectedStore] = useState(null);
-  const logoRef = useRef(null);
 
   useEffect(() => {
     document.body.style.backgroundColor = 'black';
@@ -21,143 +20,107 @@ const Index = () => {
   };
 
   const handleCopyToClipboard = () => {
-    const text = `Claudio Arias
-12.345.678-9
-Cuenta Corriente
-1976772503
-Banco Scotiabank
-tiendavalpo07@gmail.com`;
+    const text = `Nombre: Claudio Arias
+Banco: Scotiabank
+Cuenta Corriente: 1976772503
+RUT: 12.345.678-9
+Email: tiendavalpo07@gmail.com`;
     navigator.clipboard.writeText(text).then(() => {
       toast.success('Datos copiados al portapapeles');
     });
   };
 
-  const [oscillationSpeed, setOscillationSpeed] = useState(1);
-
-  useEffect(() => {
-    const animateLogo = () => {
-      if (logoRef.current) {
-        const time = Date.now() * 0.001 * oscillationSpeed;
-        const yOffset = Math.sin(time) * 5; // 5px max displacement
-        logoRef.current.style.transform = `translate(-50%, -50%) translateY(${yOffset}px)`;
-      }
-      requestAnimationFrame(animateLogo);
-    };
-    const animationFrame = requestAnimationFrame(animateLogo);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [oscillationSpeed]);
-
-  const handleLogoInteraction = (e) => {
-    if (!logoRef.current) return;
-    
-    const logo = logoRef.current;
-    const rect = logo.getBoundingClientRect();
-    const y = e.clientY - rect.top;
-    
-    // Adjust oscillation speed based on mouse position
-    const newSpeed = 1 + Math.abs((y / rect.height - 0.5) * 2);
-    setOscillationSpeed(newSpeed);
-  };
-
-  const resetLogoPosition = () => {
-    setOscillationSpeed(1);
-  };
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8">
       <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
+        @keyframes glowText {
+          0% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+          50% { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+          100% { text-shadow: 0 0 5px rgba(255,255,255,0.5); }
+        }
+        .glow-text {
+          animation: glowText 3s infinite;
         }
         .store-button, .social-button {
           text-decoration: none;
           color: #fff;
-          padding: 10px 20px;
-          margin: 5px;
+          padding: 12px 24px;
+          margin: 8px;
           display: inline-block;
-          border-radius: 25px;
+          border-radius: 30px;
           font-weight: bold;
           text-transform: uppercase;
           background-color: rgba(255, 255, 255, 0.1);
-          border: 2px solid rgba(255, 255, 255, 0.4);
-          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-          transition: all 0.2s ease;
-          font-size: 0.9rem;
-        }
-        .store-button {
-          width: 100%;
+          border: 2px solid rgba(255, 255, 255, 0.6);
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+          transition: all 0.3s ease;
+          font-size: 1rem;
         }
         .store-button:hover, .social-button:hover {
           background-color: rgba(255, 255, 255, 0.2);
-          box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+          box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+          transform: translateY(-2px);
         }
         .store-button:active, .social-button:active {
-          transform: scale(0.98);
-          background-color: rgba(255, 255, 255, 0.3);
+          transform: translateY(1px);
+          box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
         }
-        #floating-logo {
-          position: absolute;
+        #background-logo {
+          position: fixed;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 200px;
-          height: 200px;
+          width: 80%;
+          height: 80%;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
           background-repeat: no-repeat;
-          opacity: 0.15;
-          transition: transform 0.3s ease-out;
-          cursor: pointer;
+          opacity: 0.1;
           z-index: -1;
-        }
-        @media (min-width: 640px) {
-          .store-button, .social-button {
-            font-size: 1rem;
-            padding: 12px 25px;
-          }
-          #floating-logo {
-            width: 300px;
-            height: 300px;
-          }
         }
       `}</style>
 
-      <div
-        id="floating-logo"
-        ref={logoRef}
-        onMouseMove={handleLogoInteraction}
-        onMouseLeave={resetLogoPosition}
-      ></div>
+      <div id="background-logo"></div>
 
       {!selectedStore ? (
-        <div className="text-center relative z-10 w-full max-w-md" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h1 className="text-3xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
+        <div className="text-center relative z-10 w-full max-w-md">
+          <h1 className="text-5xl mb-8 font-bold glow-text">SeedHarta</h1>
+          <h2 className="text-3xl mb-8 font-bold glow-text">Selecciona Tu Tienda</h2>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
             <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
           </div>
         </div>
       ) : (
-        <div className="text-center w-full max-w-md p-4 relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
-          <div className="mb-6 text-left">
-            <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
-            <p className="text-sm sm:text-base whitespace-pre-line">
-              Claudio Arias
-              12.345.678-9
-              Cuenta Corriente
-              1976772503
-              Banco Scotiabank
-              tiendavalpo07@gmail.com
+        <div className="text-center w-full max-w-md p-4 relative z-10">
+          <h2 className="text-4xl mb-6 font-bold glow-text">Detalles de Pago y Contacto - {selectedStore === 'vina' ? 'Viña' : 'Valpo'}</h2>
+          <div className="mb-6 text-left bg-black bg-opacity-50 p-6 rounded-lg">
+            <h3 className="text-2xl mb-4 font-semibold">Datos de Transferencia Bancaria:</h3>
+            <p className="text-lg whitespace-pre-line">
+              Nombre: Claudio Arias
+              Banco: Scotiabank
+              Cuenta Corriente: 1976772503
+              RUT: 12.345.678-9
+              Email: tiendavalpo07@gmail.com
             </p>
-            <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
+            <button className="social-button mt-6 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex flex-row justify-center items-center space-x-4 mb-6 flex-wrap">
-            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
+          <div className="flex flex-row justify-center items-center space-x-4 mb-6">
+            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button">WHATSAPP</a>
+            <a 
+              href={selectedStore === 'vina' 
+                ? "https://www.facebook.com/seedhartavinadelmar" 
+                : "https://www.facebook.com/seedhartavalparaiso"
+              } 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="social-button"
+            >
+              FACEBOOK
+            </a>
             <a 
               href={selectedStore === 'vina' 
                 ? "https://www.instagram.com/seedhartavinadelmar/" 
@@ -167,27 +130,17 @@ tiendavalpo07@gmail.com`;
               rel="noopener noreferrer" 
               className="social-button"
             >
-              Instagram
-            </a>
-            <a
-              href={selectedStore === 'vina'
-                ? "https://www.google.com/maps/place/Seedharta+Growshop/data=!4m7!3m6!1s0x9689dde2e7264711:0x29800d8e2932ed2!8m2!3d-33.0230586!4d-71.5588417!16s%2Fg%2F11c6q16mb5!19sChIJEUcm5-LdiZYR0i6T4tgAmAI?authuser=0&hl=es-419&rclk=1"
-                : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-button"
-            >
-              Ubicación
+              INSTAGRAM
             </a>
           </div>
         </div>
       )}
 
       <button
-        className="absolute top-4 right-4 bg-white bg-opacity-10 px-3 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-sm sm:text-base"
+        className="absolute top-4 right-4 bg-white bg-opacity-10 px-4 py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-base"
         onClick={() => setSelectedStore(null)}
       >
-        Selección de tienda
+        Volver a selección
       </button>
     </div>
   );
