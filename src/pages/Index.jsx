@@ -82,15 +82,18 @@ tiendavalpo07@gmail.com`;
           background-color: rgba(255, 255, 255, 0.1);
           border: 2px solid rgba(255, 255, 255, 0.4);
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-          transition: all 0.3s ease;
+          transition: all 0.2s ease;
           font-size: 0.9rem;
-          width: 100%;
-          max-width: 200px;
+          width: auto;
+          min-width: 120px;
         }
         .store-button:hover, .social-button:hover {
-          transform: scale(1.05);
+          background-color: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+        }
+        .store-button:active, .social-button:active {
+          transform: scale(0.98);
           background-color: rgba(255, 255, 255, 0.3);
-          box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
         }
         #floating-logo {
           position: absolute;
@@ -136,22 +139,24 @@ tiendavalpo07@gmail.com`;
           </div>
         </div>
       ) : (
-        <div className="text-center w-full max-w-md p-4 sm:p-8 sm:bg-opacity-10 sm:bg-white sm:rounded-lg sm:shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
+        <div className="text-center w-full max-w-md p-4 relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
-            <p className="text-sm sm:text-base">Claudio Arias</p>
-            <p className="text-sm sm:text-base">12.345.678-9</p>
-            <p className="text-sm sm:text-base">Cuenta Corriente</p>
-            <p className="text-sm sm:text-base">1976772503</p>
-            <p className="text-sm sm:text-base">Banco Scotiabank</p>
-            <p className="text-sm sm:text-base">tiendavalpo07@gmail.com</p>
+            <p className="text-sm sm:text-base whitespace-pre-line">
+              Claudio Arias
+              12.345.678-9
+              Cuenta Corriente
+              1976772503
+              Banco Scotiabank
+              tiendavalpo07@gmail.com
+            </p>
             <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
-            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button w-full sm:w-auto">WhatsApp</a>
+          <div className="flex flex-row justify-center items-center space-x-4 mb-6 flex-wrap">
+            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
             <a 
               href={selectedStore === 'vina' 
                 ? "https://www.instagram.com/seedhartavinadelmar/" 
@@ -159,7 +164,7 @@ tiendavalpo07@gmail.com`;
               } 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="social-button w-full sm:w-auto"
+              className="social-button"
             >
               Instagram
             </a>
@@ -169,7 +174,7 @@ tiendavalpo07@gmail.com`;
                 : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-button w-full sm:w-auto"
+              className="social-button"
             >
               Ubicación
             </a>
