@@ -21,15 +21,12 @@ const Index = () => {
   };
 
   const handleCopyToClipboard = () => {
-    const text = `Nombre: Claudio Arias
-
-Banco: Scotiabank
-
-Cuenta Corriente: 1976772503
-
-RUT: 12.345.678-9
-
-Email: tiendavalpo07@gmail.com`;
+    const text = `Claudio Arias
+12.345.678-9
+Cuenta Corriente
+1976772503
+Banco Scotiabank
+tiendavalpo07@gmail.com`;
     navigator.clipboard.writeText(text).then(() => {
       toast.success('Datos copiados al portapapeles');
     });
@@ -143,11 +140,12 @@ Email: tiendavalpo07@gmail.com`;
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
-            <p className="text-sm sm:text-base"><strong>Nombre:</strong> Claudio Arias</p>
-            <p className="text-sm sm:text-base"><strong>Banco:</strong> Scotiabank</p>
-            <p className="text-sm sm:text-base"><strong>Cuenta Corriente:</strong> 1976772503</p>
-            <p className="text-sm sm:text-base"><strong>RUT:</strong> 12.345.678-9</p>
-            <p className="text-sm sm:text-base"><strong>Email:</strong> tiendavalpo07@gmail.com</p>
+            <p className="text-sm sm:text-base">Claudio Arias</p>
+            <p className="text-sm sm:text-base">12.345.678-9</p>
+            <p className="text-sm sm:text-base">Cuenta Corriente</p>
+            <p className="text-sm sm:text-base">1976772503</p>
+            <p className="text-sm sm:text-base">Banco Scotiabank</p>
+            <p className="text-sm sm:text-base">tiendavalpo07@gmail.com</p>
             <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
             </button>
