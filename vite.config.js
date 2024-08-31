@@ -5,11 +5,8 @@ import { resolve } from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    host: "::",
-    port: "8080",
-  },
   plugins: [react()],
+  base: "/seedharta-selector/",
   resolve: {
     alias: [
       {
