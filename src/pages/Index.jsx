@@ -67,7 +67,7 @@ Email: tiendavalpo07@gmail.com`;
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8">
       <style jsx>{`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
@@ -76,7 +76,7 @@ Email: tiendavalpo07@gmail.com`;
         .store-button, .social-button {
           text-decoration: none;
           color: #fff;
-          padding: 12px 25px;
+          padding: 10px 20px;
           margin: 5px;
           display: inline-block;
           border-radius: 25px;
@@ -86,9 +86,9 @@ Email: tiendavalpo07@gmail.com`;
           border: 2px solid rgba(255, 255, 255, 0.4);
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
           transition: all 0.3s ease;
-          font-size: 1rem;
-          width: auto;
-          min-width: 150px;
+          font-size: 0.9rem;
+          width: 100%;
+          max-width: 200px;
         }
         .store-button:hover, .social-button:hover {
           transform: scale(1.05);
@@ -100,8 +100,8 @@ Email: tiendavalpo07@gmail.com`;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 300px;
-          height: 300px;
+          width: 200px;
+          height: 200px;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
@@ -110,6 +110,16 @@ Email: tiendavalpo07@gmail.com`;
           transition: transform 0.3s ease-out;
           cursor: pointer;
           z-index: -1;
+        }
+        @media (min-width: 640px) {
+          .store-button, .social-button {
+            font-size: 1rem;
+            padding: 12px 25px;
+          }
+          #floating-logo {
+            width: 300px;
+            height: 300px;
+          }
         }
       `}</style>
 
@@ -121,29 +131,29 @@ Email: tiendavalpo07@gmail.com`;
       ></div>
 
       {!selectedStore ? (
-        <div className="text-center relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h1 className="text-4xl mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
-          <div className="flex justify-center space-x-4">
+        <div className="text-center relative z-10 w-full max-w-md" style={{ animation: 'fadeIn 1.5s forwards' }}>
+          <h1 className="text-3xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <button className="store-button" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
             <button className="store-button" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
           </div>
         </div>
       ) : (
-        <div className="text-center max-w-md bg-opacity-10 bg-white p-8 rounded-lg shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h2 className="text-3xl mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
+        <div className="text-center w-full max-w-md bg-opacity-10 bg-white p-6 sm:p-8 rounded-lg shadow-lg relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
+          <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
-            <h3 className="text-xl mb-4 font-semibold">Detalles de Pago y Contacto</h3>
-            <p><strong>Nombre:</strong> Claudio Arias</p>
-            <p><strong>Banco:</strong> Scotiabank</p>
-            <p><strong>Cuenta Corriente:</strong> 1976772503</p>
-            <p><strong>RUT:</strong> 12.345.678-9</p>
-            <p><strong>Email:</strong> tiendavalpo07@gmail.com</p>
+            <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
+            <p className="text-sm sm:text-base"><strong>Nombre:</strong> Claudio Arias</p>
+            <p className="text-sm sm:text-base"><strong>Banco:</strong> Scotiabank</p>
+            <p className="text-sm sm:text-base"><strong>Cuenta Corriente:</strong> 1976772503</p>
+            <p className="text-sm sm:text-base"><strong>RUT:</strong> 12.345.678-9</p>
+            <p className="text-sm sm:text-base"><strong>Email:</strong> tiendavalpo07@gmail.com</p>
             <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex justify-center space-x-4 mb-6">
-            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button flex-1">WhatsApp</a>
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+            <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" className="social-button w-full sm:w-auto">WhatsApp</a>
             <a 
               href={selectedStore === 'vina' 
                 ? "https://www.instagram.com/seedhartavinadelmar/" 
@@ -151,7 +161,7 @@ Email: tiendavalpo07@gmail.com`;
               } 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="social-button flex-1"
+              className="social-button w-full sm:w-auto"
             >
               Instagram
             </a>
@@ -161,7 +171,7 @@ Email: tiendavalpo07@gmail.com`;
                 : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-button flex-1"
+              className="social-button w-full sm:w-auto"
             >
               Ubicación
             </a>
@@ -170,7 +180,7 @@ Email: tiendavalpo07@gmail.com`;
       )}
 
       <button
-        className="absolute top-4 right-4 bg-white bg-opacity-10 px-4 py-2 rounded-full hover:bg-opacity-20 transition-all z-20"
+        className="absolute top-4 right-4 bg-white bg-opacity-10 px-3 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-sm sm:text-base"
         onClick={() => setSelectedStore(null)}
       >
         Selección de tienda
