@@ -83,7 +83,7 @@ tiendavalpo07@gmail.com`;
           border: 2px solid rgba(255, 255, 255, 0.4);
           box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
           transition: all 0.2s ease;
-          font-size: 0.9rem;
+          font-size: 0.8rem;
         }
         .store-button {
           width: 100%;
@@ -101,8 +101,8 @@ tiendavalpo07@gmail.com`;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
-          width: 200px;
-          height: 200px;
+          width: 150px;
+          height: 150px;
           background-image: url('https://i.imgur.com/gDXPs0n.png');
           background-size: contain;
           background-position: center;
@@ -133,7 +133,7 @@ tiendavalpo07@gmail.com`;
 
       {!selectedStore ? (
         <div className="text-center relative z-10 w-full max-w-md" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h1 className="text-3xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
+          <h1 className="text-2xl sm:text-4xl mb-6 sm:mb-8 font-bold text-shadow">Selecciona Tu Tienda</h1>
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
             <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('vina')}>Seedharta Viña</button>
             <button className="store-button w-full sm:w-48" onClick={() => handleStoreSelect('valpo')}>Seedharta Valpo</button>
@@ -141,10 +141,10 @@ tiendavalpo07@gmail.com`;
         </div>
       ) : (
         <div className="text-center w-full max-w-md p-4 relative z-10" style={{ animation: 'fadeIn 1.5s forwards' }}>
-          <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
+          <h2 className="text-xl sm:text-3xl mb-4 sm:mb-6 font-bold">{selectedStore === 'vina' ? 'Seedharta Viña' : 'Seedharta Valpo'}</h2>
           <div className="mb-6 text-left">
             <h3 className="text-lg sm:text-xl mb-3 sm:mb-4 font-semibold">Detalles de Pago y Contacto</h3>
-            <p className="text-sm sm:text-base whitespace-pre-line">
+            <p className="text-xs sm:text-base whitespace-pre-line">
               Nombre: Claudio Arias<br />
               Rut: 12.006.081-3<br />
               Cuenta: Corriente<br />
@@ -152,15 +152,15 @@ tiendavalpo07@gmail.com`;
               Banco: Scotiabank<br />
               email: tiendavalpo07@gmail.com
             </p>
-            <button className="social-button mt-4 w-full" onClick={handleCopyToClipboard}>
+            <button className="social-button mt-4 w-full text-xs sm:text-base" onClick={handleCopyToClipboard}>
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex flex-row justify-center items-center space-x-2 mb-6">
+          <div className="flex flex-wrap justify-center items-center gap-2 mb-6">
             <a href={selectedStore === 'vina' 
                 ? "https://wa.me/56964316344"
                 : "https://wa.me/56993198230"
-              } target="_blank" rel="noopener noreferrer" className="social-button">WhatsApp</a>
+              } target="_blank" rel="noopener noreferrer" className="social-button text-xs sm:text-base">WhatsApp</a>
             <a 
               href={selectedStore === 'vina' 
                 ? "https://www.instagram.com/seedhartavinadelmar/" 
@@ -168,7 +168,7 @@ tiendavalpo07@gmail.com`;
               } 
               target="_blank" 
               rel="noopener noreferrer" 
-              className="social-button"
+              className="social-button text-xs sm:text-base"
             >
               Instagram
             </a>
@@ -178,14 +178,14 @@ tiendavalpo07@gmail.com`;
                 : "https://www.google.com/maps/place/Seedharta+Growshop/@-33.0470596,-71.6060127,17z/data=!3m1!4b1!4m6!3m5!1s0x9689e1c16b64872b:0x96d2bf256bf85bc3!8m2!3d-33.0470596!4d-71.6060127!16s%2Fg%2F11h64v92pm?authuser=0&hl=es-419&entry=ttu&g_ep=EgoyMDI0MDgyNi4wIKXMDSoASAFQAw%3D%3D"}
               target="_blank"
               rel="noopener noreferrer"
-              className="social-button"
+              className="social-button text-xs sm:text-base"
             >
               Ubicación
             </a>
             <button onClick={() => toast.info(selectedStore === 'vina' 
               ? "Lunes a viernes 11:00 a 19:00 hrs\nSábado de 12:00 a 16:00 hrs\nDom cerrado"
               : "Lun a Vie 10.30 a 19.00\nSab 10.30 a 17.00\nDom 10.30 a 15.00"
-            )} className="social-button">
+            )} className="social-button text-xs sm:text-base">
               Horarios
             </button>
           </div>
@@ -193,7 +193,7 @@ tiendavalpo07@gmail.com`;
       )}
 
       <button
-        className="absolute top-4 right-4 bg-white bg-opacity-10 px-3 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-sm sm:text-base"
+        className="absolute top-4 right-4 bg-white bg-opacity-10 px-2 py-1 sm:px-4 sm:py-2 rounded-full hover:bg-opacity-20 transition-all z-20 text-xs sm:text-base"
         onClick={() => setSelectedStore(null)}
       >
         Selección de tienda
