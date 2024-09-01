@@ -22,10 +22,10 @@ const Index = () => {
 
   const handleCopyToClipboard = () => {
     const text = `Claudio Arias
-12.006.081-3
-Cuenta Corriente
-1976772503
-Banco Scotiabank
+12.006.081-3 
+Cuenta Corriente 
+1976772503 
+Banco Scotiabank 
 tiendavalpo07@gmail.com`;
     navigator.clipboard.writeText(text).then(() => {
       toast.success('Datos copiados al portapapeles');
