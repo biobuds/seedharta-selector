@@ -92,10 +92,10 @@ Error generating stack: `+i.message+`
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */const aS=lS("House",[["path",{d:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8",key:"5wwlr5"}],["path",{d:"M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",key:"1d0kgt"}]]),uS=()=>{const[e,t]=x.useState(null),n=x.useRef(null);x.useEffect(()=>(document.body.style.backgroundColor="black",document.body.style.color="white",document.body.style.fontFamily="Arial, sans-serif",()=>{document.body.style.backgroundColor="",document.body.style.color="",document.body.style.fontFamily=""}),[]);const r=u=>{t(u)},o=()=>{navigator.clipboard.writeText(`Claudio Arias
-12.006.081-3
-Cuenta Corriente
-1976772503
-Banco Scotiabank
+12.006.081-3 
+Cuenta Corriente 
+1976772503 
+Banco Scotiabank 
 tiendavalpo07@gmail.com`).then(()=>{c0.success("Datos copiados al portapapeles")})},[i,s]=x.useState(1);x.useEffect(()=>{const u=()=>{if(n.current){const f=Date.now()*.001*i,c=Math.sin(f)*5;n.current.style.transform=`translate(-50%, -50%) translateY(${c}px)`}requestAnimationFrame(u)},d=requestAnimationFrame(u);return()=>cancelAnimationFrame(d)},[i]);const l=u=>{if(!n.current)return;const f=n.current.getBoundingClientRect(),c=u.clientY-f.top,g=1+Math.abs((c/f.height-.5)*2);s(g)},a=()=>{s(1)};return L.jsxs("div",{className:"min-h-screen flex flex-col items-center justify-center relative overflow-hidden px-4 py-8",children:[L.jsx("style",{jsx:!0,children:`
         @keyframes fadeIn {
           from { opacity: 0; transform: translateY(20px); }
