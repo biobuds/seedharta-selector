@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { toast } from 'sonner';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Index = () => {
   const [selectedStore, setSelectedStore] = useState(null);
+  const [showHoursModal, setShowHoursModal] = useState(false);
   const logoRef = useRef(null);
 
   useEffect(() => {
@@ -182,10 +184,10 @@ tiendavalpo07@gmail.com`;
             >
               Ubicación
             </a>
-            <button onClick={() => toast.info(selectedStore === 'vina' 
-              ? "Lunes a viernes 11:00 a 19:00 hrs\nSábado de 12:00 a 16:00 hrs\nDom cerrado"
-              : "Lun a Vie 10.30 a 19.00\nSab 10.30 a 17.00\nDom 10.30 a 15.00"
-            )} className="social-button text-xs sm:text-base">
+            <button
+              onClick={() => setShowHoursModal(true)}
+              className="social-button text-xs sm:text-base bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
+            >
               Horarios
             </button>
           </div>
@@ -198,6 +200,46 @@ tiendavalpo07@gmail.com`;
       >
         Selección de tienda
       </button>
+
+      <AnimatePresence>
+        {showHoursModal && (
+          <motion.div
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowHoursModal(false)}
+          >
+            <motion.div
+              className="modal-content"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="modal-header">
+                <h3 className="text-xl font-bold">Horarios de Atención</h3>
+                <button className="modal-close" onClick={() => setShowHoursModal(false)}>&times;</button>
+              </div>
+              <ul className="hours-list">
+                {selectedStore === 'vina' ? (
+                  <>
+                    <li><span>Lunes a Viernes:</span> <span>11:00 - 19:00</span></li>
+                    <li><span>Sábado:</span> <span>12:00 - 16:00</span></li>
+                    <li><span>Domingo:</span> <span>Cerrado</span></li>
+                  </>
+                ) : (
+                  <>
+                    <li><span>Lunes a Viernes:</span> <span>10:30 - 19:00</span></li>
+                    <li><span>Sábado:</span> <span>10:30 - 17:00</span></li>
+                    <li><span>Domingo:</span> <span>10:30 - 15:00</span></li>
+                  </>
+                )}
+              </ul>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
