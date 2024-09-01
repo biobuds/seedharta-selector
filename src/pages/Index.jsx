@@ -156,7 +156,7 @@ tiendavalpo07@gmail.com`;
               Copiar datos de transferencia
             </button>
           </div>
-          <div className="flex flex-row justify-center items-center space-x-4 mb-6 flex-wrap">
+          <div className="flex flex-row justify-center items-center space-x-2 mb-6">
             <a href={selectedStore === 'vina' 
                 ? "https://wa.me/56964316344"
                 : "https://wa.me/56993198230"
@@ -182,6 +182,12 @@ tiendavalpo07@gmail.com`;
             >
               Ubicación
             </a>
+            <button onClick={() => toast.info(selectedStore === 'vina' 
+              ? "Lunes a viernes 11:00 a 19:00 hrs\nSábado de 12:00 a 16:00 hrs\nDom cerrado"
+              : "Lun a Vie 10.30 a 19.00\nSab 10.30 a 17.00\nDom 10.30 a 15.00"
+            )} className="social-button">
+              Horarios
+            </button>
           </div>
         </div>
       )}
