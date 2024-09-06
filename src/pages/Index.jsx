@@ -183,8 +183,8 @@ tiendavalpo07@gmail.com`;
               Ubicación
             </a>
             <button onClick={() => toast.info(selectedStore === 'vina' 
-              ? "Lunes a viernes 11:00 a 19:00 hrs\nSábado de 12:00 a 16:00 hrs\nDom cerrado"
-              : "Lun a Vie 10.30 a 19.00\nSab 10.30 a 17.00\nDom 10.30 a 15.00"
+              ? "Lunes a viernes 11:00 a 19:00 hrs\nSábado de 11:30 a 15:30 hrs\nDom cerrado"
+              : "Lunes a viernes 10.30 a 19.00 hrs\nSábado 10.30 a 17.00 hrs\nDom 10.30 a 15.00 hrs"
             )} className="social-button text-xs sm:text-base">
               Horarios
             </button>
